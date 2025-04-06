@@ -1,0 +1,12 @@
+.vscode/
+__pycache__/
+*.pyc
+*.log
+.env
+node_modules/
+AppData/
+*.bin
+*.exe
+*.dll
+.DS_Store
+Thumbs.db
