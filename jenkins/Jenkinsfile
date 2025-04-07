@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/rudra/devops-intern-challenge.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'python3 -m venv venv && source venv/bin/activate && pip install -r flask_app/requirements.txt'
+            }
+        }
+        stage('Restart App') {
+            steps {
+                sh 'sudo systemctl restart flask_app'
+            }
+        }
+        stage('Health Check') {
+            steps {
+                sh 'curl http://localhost'
+            }
+        }
+    }
+}
